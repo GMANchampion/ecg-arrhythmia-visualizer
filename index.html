@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ECG Visualizer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1>ECG Arrhythmia Visualizer</h1>
+        <p>
+          A first-pass interactive monitor for learning how heart rhythm changes
+          affect ECG timing and shape.
+        </p>
+      </header>
+
+      <section class="monitor">
+        <div class="readout">
+          <div>
+            <span>Rhythm</span>
+            <strong id="rhythmName">Normal sinus rhythm</strong>
+          </div>
+          <div>
+            <span>Heart rate</span>
+            <strong><span id="heartRate">72</span> bpm</strong>
+          </div>
+        </div>
+
+        <canvas id="ecgCanvas" width="900" height="360" aria-label="ECG waveform"></canvas>
+      </section>
+
+      <section class="controls" aria-label="Rhythm controls">
+        <button class="active" data-rhythm="normal" type="button">Normal</button>
+        <button data-rhythm="tachycardia" type="button">Tachycardia</button>
+        <button data-rhythm="bradycardia" type="button">Bradycardia</button>
+        <button data-rhythm="afib" type="button">AFib rough draft</button>
+      </section>
+
+      <section class="notes">
+        <h2>What this version demonstrates</h2>
+        <ul>
+          <li>Canvas drawing for a scrolling ECG strip.</li>
+          <li>Basic P-QRS-T waveform built from simple math curves.</li>
+          <li>Different heart rates by changing the spacing between beats.</li>
+          <li>A rough atrial fibrillation mode with irregular timing and baseline wiggle.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
