@@ -3,52 +3,71 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ECG Visualizer</title>
+    <title>ECG Visualizer v1.1.0</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="page">
-      <header class="header">
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Intermediate benchmark v1.1.0</p>
         <h1>ECG Arrhythmia Visualizer</h1>
-        <p>
-          A first-pass interactive monitor for learning how heart rhythm changes
-          affect ECG timing and shape.
-        </p>
+        <p>Adds a clearer rhythm library, learner-facing explanations, and better readouts while still using the Day 1 repeating waveform engine.</p>
       </header>
 
-      <section class="monitor">
-        <div class="readout">
-          <div>
-            <span>Rhythm</span>
-            <strong id="rhythmName">Normal sinus rhythm</strong>
+      <section class="workspace" aria-label="ECG visualizer workspace">
+        <section class="monitor" aria-label="ECG monitor">
+          <div class="monitor-header">
+            <div>
+              <span class="tiny-label">Rhythm</span>
+              <strong id="rhythmName">Normal sinus rhythm</strong>
+            </div>
+            <div>
+              <span class="tiny-label">Heart rate</span>
+              <strong><span id="heartRate">72</span> bpm</strong>
+            </div>
+            <div>
+              <span class="tiny-label">QRS</span>
+              <strong id="qrsReadout">Narrow</strong>
+            </div>
           </div>
-          <div>
-            <span>Heart rate</span>
-            <strong><span id="heartRate">72</span> bpm</strong>
+          <canvas id="ecgCanvas" aria-label="Animated ECG strip"></canvas>
+          <div class="metric-row">
+            <div><span>Rate</span><strong id="rateReadout">Normal</strong></div>
+            <div><span>P waves</span><strong id="pReadout">Present</strong></div>
+            <div><span>Morphology</span><strong id="morphReadout">Organized P-QRS-T</strong></div>
           </div>
-        </div>
+        </section>
 
-        <canvas id="ecgCanvas" width="900" height="360" aria-label="ECG waveform"></canvas>
+        <aside class="side-panel" aria-label="Controls and rhythm information">
+          <section>
+            <p class="eyebrow">Rhythm controls</p>
+            <div id="rhythmButtons" class="button-grid"></div>
+          </section>
+
+          
+
+          
+        </aside>
       </section>
 
-      <section class="controls" aria-label="Rhythm controls">
-        <button class="active" data-rhythm="normal" type="button">Normal</button>
-        <button data-rhythm="tachycardia" type="button">Tachycardia</button>
-        <button data-rhythm="bradycardia" type="button">Bradycardia</button>
-        <button data-rhythm="afib" type="button">AFib rough draft</button>
+      <section class="learning" aria-label="Rhythm learning notes">
+        <article>
+          <p class="eyebrow">Explanation</p>
+          <h2 id="infoTitle">Normal sinus rhythm</h2>
+          <p id="explanation">The rhythm is steady.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Clues</p>
+          <ul id="clueList"></ul>
+        </article>
+        <article>
+          <p class="eyebrow">Version notes</p>
+          <p>Rhythm library milestone. See README, CHANGELOG, and KNOWN_ISSUES for this checkpoint.</p>
+        </article>
       </section>
 
-      <section class="notes">
-        <h2>What this version demonstrates</h2>
-        <ul>
-          <li>Canvas drawing for a scrolling ECG strip.</li>
-          <li>Basic P-QRS-T waveform built from simple math curves.</li>
-          <li>Different heart rates by changing the spacing between beats.</li>
-          <li>A rough atrial fibrillation mode with irregular timing and baseline wiggle.</li>
-        </ul>
-      </section>
+      <p class="medical-note">Educational simulation only. Not for diagnosis or treatment decisions.</p>
     </main>
-
     <script src="script.js"></script>
   </body>
 </html>
